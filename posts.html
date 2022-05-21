@@ -14,11 +14,11 @@
 		<script src="https://kit.fontawesome.com/982222d327.js" crossorigin="anonymous"></script>
 
 		<meta name="description" content="Gourmet recipes made easy for home cooking" />
-		<title>Gourmet food | Contact us</title>
+		<title>Gourmet food | All recipes</title>
 		<link rel="icon" type="image/x-icon" href="../images/logo-background.jpg" />
 
 		<script src="https://kit.fontawesome.com/561d23a571.js" crossorigin="anonymous"></script>
-		<link href="css/style.css" type="text/css" rel="stylesheet" />
+		<link href="css/style.css" rel="stylesheet" />
 	</head>
 	<body>
 		<header>
@@ -30,14 +30,14 @@
 				</a>
 				<div class="navigation">
 					<a href="index.html" class="nav-link">Home</a>
-					<a href="posts.html" class="nav-link">Recipes</a>
+					<a href="posts.html" class="nav-link current-page">Recipes</a>
 					<a href="about.html" class="nav-link">About</a>
-					<a href="contact.html" class="nav-link current-page">Contact</a>
+					<a href="contact.html" class="nav-link">Contact</a>
 				</div>
 				<div class="search-icon"><i class="fa-solid fa-magnifying-glass"></i></div>
 			</div>
 			<div class="subheader">
-				<div class="current-location"><a href="index.html">Gourmet food</a> > Contact</div>
+				<div class="current-location"><a href="index.html">Gourmet food</a> > Recipes</div>
 				<div class="search-container">
 					<div>
 						<input type="text" class="search" placeholder="Search for a recipes.." />
@@ -47,38 +47,11 @@
 			</div>
 		</header>
 		<main id="main">
-			<div class="h2-backgr"><h2 class="h2-header">Please leave your feedback:</h2></div>
-			<div class="form-submitted success-msg"><i class="fa fa-check"></i> Your message has been send. Thank you for your feedback.</div>
-			<div class="form-container">
-				<form class="contact-form">
-					<label for="name"
-						>Your name:
-						<div class="form-error" id="name-error">* Name must have at least 5 characters</div>
-						<input type="text" name="name" id="name" class="form-input" required />
-					</label>
-
-					<label for="email"
-						>Your email:
-						<div class="form-error" id="email-error">* Please enter a valid email address</div>
-						<input type="email" name="email" id="email" class="form-input" required />
-					</label>
-
-					<label for="subject"
-						>Subject:
-						<div class="form-error" id="subject-error">* Subject must have at least 15 characters</div>
-						<input type="text" name="subject" id="subject" class="form-input" required />
-					</label>
-
-					<label for="message"
-						>Message:
-						<div class="form-error" id="message-error">* Your message must have at least 25 characters</div>
-						<textarea name="message" id="message" cols="30" rows="10" class="form-input form-text" required></textarea>
-					</label>
-
-					<input type="submit" value="Send" class="contact-submit" />
-				</form>
-				<div class="contact-img"></div>
+			<div class="h2-backgr"><h2 class="h2-header">Popular recipes</h2></div>
+			<div class="posts-display">
+				<!-- All posts -->
 			</div>
+			<div id="next-page">&#8595 view more recipes &#8595</div>
 		</main>
 		<footer>
 			<div class="logo">
@@ -88,15 +61,14 @@
 
 			<div class="footer-nav">
 				<a href="index.html" class="nav-link footer-text">Home</a>
-				<a href="blog.html" class="nav-link footer-text">Recipes</a>
+				<a href="blog.html" class="nav-link footer-text current-page">Recipes</a>
 				<a href="about.html" class="nav-link footer-text">About</a>
-				<a href="contact.html" class="nav-link footer-text current-page">Contact</a>
+				<a href="contact.html" class="nav-link footer-text">Contact</a>
 			</div>
-
 			<hr />
 			<p class="footer-text">Copyright &copy; All rights reserved | Created by Viorel Lazari</p>
 		</footer>
 		<script src="js/script.js" type="module"></script>
-		<script src="js/contact.js" type="module"></script>
+		<script src="js/posts.js" type="module"></script>
 	</body>
 </html>

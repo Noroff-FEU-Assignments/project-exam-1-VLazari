@@ -1,0 +1,68 @@
+/* Warning messages style -----> */
+
+.info-msg,
+.success-msg,
+.warning-msg,
+.error-msg {
+	margin: 10px 5px;
+	padding: 10px;
+	border-radius: 1px;
+	text-align: center;
+}
+.info-msg {
+	color: darkblue;
+	background-color: #bbeeff;
+	border: 1px solid darkblue;
+}
+.success-msg {
+	color: darkgreen;
+	background-color: #e2f3c5;
+	border: 1px solid darkgreen;
+}
+.warning-msg {
+	color: darkgoldenrod;
+	background-color: #fff4c8;
+	border: 1px solid darkgoldenrod;
+}
+.error-msg {
+	color: darkred;
+	background-color: #fdcccc;
+	border: 1px solid darkred;
+}
+.fa-info-circle,
+.fa-check,
+.fa-warning,
+.fa-times-circle {
+	margin-right: 10px;
+}
+/* <div class="info-msg">
+  <i class="fa fa-info-circle"></i>
+  This is an info message.
+</div>
+
+<div class="success-msg">
+  <i class="fa fa-check"></i>
+  This is a success message.
+</div>
+
+<div class="warning-msg">
+  <i class="fa fa-warning"></i>
+  This is a warning message.
+</div>
+
+<div class="error-msg">
+  <i class="fa fa-times-circle"></i>
+  This is a error message.
+</div> */
+
+.succes {
+	padding: 10px;
+	border: 1px solid #d8d8d8;
+	border-radius: 5px;
+	background-color: rgb(236, 255, 216);
+	color: green;
+	text-align: center;
+	margin-top: 30px;
+}
+
+/* <---- Warning messages style */

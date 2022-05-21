@@ -1,9 +1,78 @@
-const post = document.querySelector(".wppost");
+import { checkLength, formValidation } from "./contact.js";
 
-async function addPost() {
-	const respons = await fetch("http://localhost:8888/gourmet/wp-json/wp/v2/posts/6");
-	const json = await respons.json();
-	console.log(json.content.rendered);
-	post.innerHTML = json.content.rendered;
+const postHeader = document.querySelector(".post-header");
+const location = document.querySelector(".current-location");
+const postName = document.querySelector(".h2-header");
+const recipe = document.querySelector(".recipe");
+const title = document.querySelector("title");
+const comments = document.querySelector(".comments");
+const userMail = document.querySelector("#email");
+const addMessage = document.querySelector(".add-message");
+const userName = document.querySelector("#name");
+const userNameError = document.querySelector("#name-error");
+const message = document.querySelector("#message");
+const messageError = document.querySelector("#message-error");
+const modalContainer = document.querySelector(".modal-container");
+const modalImg = document.querySelector("#modal-image");
+console.log(modalImg);
+
+const urlString = window.location.search;
+const urlParam = new URLSearchParams(urlString);
+const postId = parseInt(urlParam.get("id"));
+
+const url = "http://localhost:8888/gourmet/wp-json/wp/v2/posts/" + postId;
+const urlComment = "http://localhost:8888/gourmet/wp-json/wp/v2/comments?post=" + postId;
+
+async function postDetails() {
+	const request = await fetch(url);
+	const post = await request.json();
+	postDisplay(post);
 }
-addPost();
+postDetails();
+
+async function postComments() {
+	const request = await fetch(urlComment);
+	const comm = await request.json();
+	if (comm.length) {
+		comm.forEach((e) => {
+			comments.innerHTML += `<h6>${e.author_name}</h6>
+		${e.content.rendered}<hr/>`;
+		});
+	}
+}
+postComments();
+
+function postDisplay(object) {
+	location.innerHTML += object.title.rendered;
+	title.innerHTML += object.title.rendered;
+	postName.innerHTML = object.title.rendered;
+	postHeader.innerHTML = `<div id="single-post" style="background-image: url(${object.image_src})" class="post-image"></div>`;
+	recipe.innerHTML = object.content.rendered;
+	const mainImg = document.querySelector("#single-post");
+	const postImg = document.querySelectorAll("img");
+	console.log(mainImg);
+	console.log(postImg);
+	mainImg.addEventListener("click", function (e) {
+		imgModal(mainImg, object);
+	});
+}
+
+async function addComment(url) {
+	const request = await fetch(url, { method: "POST" });
+}
+
+addMessage.addEventListener("submit", function (e) {
+	e.preventDefault();
+	formValidation(userName, userNameError, 2);
+	formValidation(message, messageError, 2);
+	if (formValidation(userName, userNameError, 2) && formValidation(message, messageError, 2) === true) {
+		let commentUrl = `http://localhost:8888/gourmet/wp-json/wp/v2/comments?post=${postId}&content=${message.value}&author_name=${userName.value}&author_email=${userMail.value}`;
+		addComment(commentUrl);
+		window.location.reload();
+	}
+});
+
+function imgModal(mainImg, object) {
+	modalContainer.style.display = "block";
+	modalImg.src = `${object.image_src}`;
+}

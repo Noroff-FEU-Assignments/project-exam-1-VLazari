@@ -1,19 +1,21 @@
-const carousel = document.querySelector(".posts"),
-	post = document.querySelector(".post"),
-	next = document.querySelector(".fa-circle-chevron-right"),
-	prev = document.querySelector(".fa-circle-chevron-left"),
-	popularPosts = document.querySelector(".popular-posts");
+const carousel = document.querySelector(".posts");
+const post = document.querySelector(".post");
+const next = document.querySelector(".fa-circle-chevron-right");
+const prev = document.querySelector(".fa-circle-chevron-left");
+const popularPosts = document.querySelector(".popular-posts");
 
 let gap = 20,
-	//---> Calculating the number of posts that fit the current screen size
-	nrOfPostsDisplayed = Math.floor(carousel.offsetWidth / (post.offsetWidth + gap)),
-	//---> Calculating  the scrolling width
-	width = post.offsetWidth * nrOfPostsDisplayed,
-	url = "http://localhost:8888/gourmet/wp-json/gposts/v1/posts";
+	url = "http://localhost:8888/gourmet/wp-json/wp/v2/posts";
 
 //---> Building carousel
+//---> Calculating the number of posts that fit the current screen size
+let nrOfPostsDisplayed = Math.floor(carousel.offsetWidth / (post.offsetWidth + gap));
+//---> Calculating  the scrolling width
+let width = post.offsetWidth * nrOfPostsDisplayed;
 
 gap *= nrOfPostsDisplayed;
+
+carousel.innerHTML = "";
 
 next.addEventListener("click", (e) => {
 	carousel.scrollBy(width + gap, 0);
@@ -31,30 +33,29 @@ prev.addEventListener("click", (e) => {
 	next.style.opacity = "70%";
 });
 
-window.addEventListener("resize", (e) => {
+window.onresize = function () {
 	location.reload();
-});
+};
 
 function postsDisplay(container, object, iteration) {
-	container.innerHTML += `<div class="post">
-                <div style="background-image: url(${object[iteration].featured_image})" class="post-image"></div>
-                <h3 class="post-title">${object[iteration].title}</h3>
-                <p class="description">${object[iteration].description}</p>
+	container.innerHTML += `<a href="post.html?id=${object[iteration].id}" class="post">
+                <div style="background-image: url(${object[iteration].image_src})" class="post-image"></div>
+                <h3 class="post-title">${object[iteration].title.rendered}</h3>
+                ${object[iteration].excerpt.rendered}
                 <p class="post-date">Date posted: ${object[iteration].date}</p>
-                </div>`;
+								</a>`;
 }
 
 async function getPosts() {
-	const response = await fetch(url);
-	const posts = await response.json();
-	for (let i = 0; i < 8; i++) {
+	const request = await fetch(url);
+	const posts = await request.json();
+	const nrPostsInCarousel = 8;
+	for (let i = 0; i < nrPostsInCarousel; i++) {
 		postsDisplay(carousel, posts, i);
 	}
-	console.log(posts.length - 4);
+
 	for (let i = posts.length - 1; i > posts.length - 5; i--) {
 		postsDisplay(popularPosts, posts, i);
-		console.log(post.length);
 	}
-	//console.log(posts);
 }
 getPosts();
