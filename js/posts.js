@@ -10,7 +10,7 @@ let search = urlParam.get("search");
 let nrOfPages = 1;
 let currentPage = 1;
 
-let url = "http://localhost:5555/gourmet/wp-json/wp/v2/posts";
+let url = "https://myprojects.digital/GourmetFood/wp-json/wp/v2/posts";
 
 if (search) {
 	search = search.replaceAll(" ", "+");
@@ -54,6 +54,6 @@ function postsDisplay(object, container) {
 
 nextPage.addEventListener("click", (e) => {
 	currentPage++;
-	url = `http://localhost:5555/gourmet/wp-json/wp/v2/posts?page=${currentPage}`;
+	url = `https://myprojects.digital/GourmetFood/wp-json/wp/v2/posts?page=${currentPage}`;
 	getPosts();
 });

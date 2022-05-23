@@ -8,7 +8,7 @@ const searchIcon = document.querySelector(".fa-magnifying-glass");
 const searchPanel = document.querySelector(".search-container");
 const searchBtn = document.querySelector("#search-button");
 const searchTerms = document.querySelector(".search");
-const url = "http://localhost:5555/gourmet/wp-json/wp/v2/posts";
+const url = "https://myprojects.digital/GourmetFood/wp-json/wp/v2/posts";
 
 burgerMenu.addEventListener("click", (e) => {
 	nav.classList.toggle("navigation-active");

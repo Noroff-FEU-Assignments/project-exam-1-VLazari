@@ -6,7 +6,7 @@ const popularPosts = document.querySelector(".popular-posts");
 const loader = document.querySelector(".loader");
 
 let gap = 20,
-	url = "http://localhost:5555/gourmet/wp-json/wp/v2/posts";
+	url = "https://myprojects.digital/GourmetFood/wp-json/wp/v2/posts";
 
 //---> Building carousel
 //---> Calculating the number of posts that fit the current screen size

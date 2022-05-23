@@ -20,8 +20,8 @@ const urlString = window.location.search;
 const urlParam = new URLSearchParams(urlString);
 const postId = parseInt(urlParam.get("id"));
 
-const url = "http://localhost:5555/gourmet/wp-json/wp/v2/posts/" + postId;
-const urlComment = "http://localhost:5555/gourmet/wp-json/wp/v2/comments?post=" + postId;
+const url = "https://myprojects.digital/GourmetFood/wp-json/wp/v2/posts/" + postId;
+const urlComment = "https://myprojects.digital/GourmetFood/wp-json/wp/v2/comments?post=" + postId;
 
 async function postDetails() {
 	try {
@@ -85,7 +85,7 @@ addMessage.addEventListener("submit", function (e) {
 	formValidation(userName, userNameError, 2);
 	formValidation(message, messageError, 2);
 	if (formValidation(userName, userNameError, 2) && formValidation(message, messageError, 2) === true) {
-		let commentUrl = `http://localhost:5555/gourmet/wp-json/wp/v2/comments?post=${postId}&content=${message.value}&author_name=${userName.value}&author_email=${userMail.value}`;
+		let commentUrl = `https://myprojects.digital/GourmetFood/wp-json/wp/v2/comments?post=${postId}&content=${message.value}&author_name=${userName.value}&author_email=${userMail.value}`;
 		addComment(commentUrl);
 		window.location.reload();
 	}
