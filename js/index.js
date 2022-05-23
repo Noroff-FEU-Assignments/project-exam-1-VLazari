@@ -5,8 +5,9 @@ const prev = document.querySelector(".fa-circle-chevron-left");
 const popularPosts = document.querySelector(".popular-posts");
 const loader = document.querySelector(".loader");
 
-let gap = 20,
-	url = "https://myprojects.digital/GourmetFood/wp-json/wp/v2/posts";
+let gap = 20;
+let url = "https://myprojects.digital/GourmetFood/wp-json/wp/v2/posts";
+let windowWidth = window.innerWidth;
 
 //---> Building carousel
 //---> Calculating the number of posts that fit the current screen size
@@ -35,7 +36,9 @@ prev.addEventListener("click", (e) => {
 });
 
 window.onresize = function () {
-	location.reload();
+	if (windowWidth != window.innerWidth) {
+		location.reload();
+	}
 };
 
 function postsDisplay(container, object, iteration) {
