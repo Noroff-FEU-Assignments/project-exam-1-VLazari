@@ -263,7 +263,8 @@ hr {
 	margin: 15px 20px 15px 0;
 }
 
-.post-image {
+.post-image,
+.about-img {
 	width: 100%;
 	height: 200px;
 	background-repeat: no-repeat;
@@ -335,7 +336,8 @@ hr {
 	color: var(--pecan);
 }
 
-.recipe p {
+.recipe p,
+.about-me p {
 	max-width: 800px;
 	padding: 10px;
 	font: 300 1.2rem var(--fontParagraph);
@@ -481,7 +483,37 @@ hr {
 	display: none;
 }
 
-/* -----> Post container -----> */
+/* -----> About -----> */
+
+.about-me {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	/* flex-direction: column-reverse; */
+	max-width: 90%;
+	margin: 0 auto;
+	color: var(--pecan);
+}
+
+.about-me p {
+}
+
+.about-img {
+	max-width: 300px;
+	height: 450px;
+	margin: 10px;
+	background-image: url("../images/man-890885_640.jpg");
+	border-radius: 10px;
+}
+
+.about-description {
+	width: 500px;
+}
+
+.about-name {
+	font: italic 500 2rem var(--fontLogoHeader);
+}
+
 /* -----> Post container -----> */
 /* -----> Post container -----> */
 
