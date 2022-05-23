@@ -54,13 +54,11 @@ Note that this is an exam, and therefore tutor support will be limited as per th
 
 ## Level 1 Process
 
-<!-- 1.	Decide on the theme for the blog you’re going to make -->
-<!-- 2.	Create a prototype of the website -->
-<!-- 3.	Install WordPress on your web host and add the blogs on the admin panel.  -->
-<!-- 4.	Use the GitHub repo created by GitHub Classroom for your files and deploy to Netlify -->
-
-<!-- 5. Build your website using HTML, CSS and JavaScript making a call to the WordPress REST API to fetch your data. -->
-
+1. Decide on the theme for the blog you’re going to make -->
+2. Create a prototype of the website
+3. Install WordPress on your web host and add the blogs on the admin panel.
+4. Use the GitHub repo created by GitHub Classroom for your files and deploy to Netlify
+5. Build your website using HTML, CSS and JavaScript making a call to the WordPress REST API to fetch your data.
 6. Install Hotjar on your website.
 7. Ask users to test your website, and adjust based on their feedback and any insights from Hotjar.
 8. Write a report documenting your project (template provided in this repository).

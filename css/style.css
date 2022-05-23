@@ -31,6 +31,26 @@ a {
 	text-decoration: none;
 }
 
+.loader {
+	margin: 50px auto;
+	width: 100px;
+	height: 100px;
+	border: 16px solid var(--alabaster);
+	border-top: 16px solid var(--magenta);
+	border-bottom: 16px solid var(--magenta); /* Blue */
+	border-radius: 50%;
+	animation: spin 1.5s linear infinite;
+}
+
+@keyframes spin {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
 .header {
 	display: flex;
 	justify-content: space-evenly;
@@ -295,6 +315,10 @@ hr {
 	color: var(--pecan);
 }
 
+.post-header:hover {
+	cursor: pointer;
+}
+
 #single-post {
 	height: 400px;
 	border-radius: 20px;
@@ -335,6 +359,10 @@ hr {
 	height: auto;
 }
 
+.recipe img:hover {
+	cursor: pointer;
+}
+
 .recipe figure {
 	width: fit-content;
 	margin: 20px auto;
@@ -346,7 +374,9 @@ hr {
 }
 
 .modal-container {
-	display: block;
+	display: none;
+	justify-content: center;
+	align-items: center;
 	position: fixed;
 	left: 0;
 	top: 0;
@@ -355,12 +385,22 @@ hr {
 	background-color: #110e04;
 	z-index: 1;
 	overflow: auto;
-	opacity: 90%;
+	animation: opacity 0.5s linear;
+}
+
+@keyframes opacity {
+	0% {
+		opacity: 0%;
+	}
+	100% {
+		opacity: 95%;
+	}
 }
 
 .close-modal {
 	position: fixed;
 	right: 30px;
+	top: 30px;
 	padding: 20px;
 	color: red;
 }
@@ -369,10 +409,6 @@ hr {
 	display: block;
 	width: 80%;
 	height: auto;
-	margin: 50px auto;
-	border: 1px solid red;
-	/* background-image: url("http://localhost:8888/gourmet/wp-content/uploads/2022/04/juicy-wagyu-steak.jpg"); */
-	z-index: 2;
 }
 
 /* -----> Contact page -----> */

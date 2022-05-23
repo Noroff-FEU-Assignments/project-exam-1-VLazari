@@ -1,6 +1,7 @@
 const allPosts = document.querySelector(".posts-display");
 const nextPage = document.querySelector("#next-page");
 const header = document.querySelector(".h2-header");
+const loader = document.querySelector(".loader");
 
 const urlString = window.location.search;
 const urlParam = new URLSearchParams(urlString);
@@ -9,7 +10,7 @@ let search = urlParam.get("search");
 let nrOfPages = 1;
 let currentPage = 1;
 
-let url = "http://localhost:8888/gourmet/wp-json/wp/v2/posts";
+let url = "http://localhost:5555/gourmet/wp-json/wp/v2/posts";
 
 if (search) {
 	search = search.replaceAll(" ", "+");
@@ -21,6 +22,7 @@ async function getPosts() {
 	try {
 		const request = await fetch(url);
 		const posts = await request.json();
+		loader.style.display = "none";
 
 		if (posts.length === 0) {
 			header.innerHTML = "Unfortunately we don't have any recipe that matches your request";
@@ -52,6 +54,6 @@ function postsDisplay(object, container) {
 
 nextPage.addEventListener("click", (e) => {
 	currentPage++;
-	url = `http://localhost:8888/gourmet/wp-json/wp/v2/posts?page=${currentPage}`;
+	url = `http://localhost:5555/gourmet/wp-json/wp/v2/posts?page=${currentPage}`;
 	getPosts();
 });

@@ -14,19 +14,25 @@ const message = document.querySelector("#message");
 const messageError = document.querySelector("#message-error");
 const modalContainer = document.querySelector(".modal-container");
 const modalImg = document.querySelector("#modal-image");
-console.log(modalImg);
+const loader = document.querySelector(".loader");
 
 const urlString = window.location.search;
 const urlParam = new URLSearchParams(urlString);
 const postId = parseInt(urlParam.get("id"));
 
-const url = "http://localhost:8888/gourmet/wp-json/wp/v2/posts/" + postId;
-const urlComment = "http://localhost:8888/gourmet/wp-json/wp/v2/comments?post=" + postId;
+const url = "http://localhost:5555/gourmet/wp-json/wp/v2/posts/" + postId;
+const urlComment = "http://localhost:5555/gourmet/wp-json/wp/v2/comments?post=" + postId;
 
 async function postDetails() {
-	const request = await fetch(url);
-	const post = await request.json();
-	postDisplay(post);
+	try {
+		const request = await fetch(url);
+		const post = await request.json();
+		loader.style.display = "none";
+
+		postDisplay(post);
+	} catch (error) {
+		postName.innerHTML = "There is a server problem, please try again later";
+	}
 }
 postDetails();
 
@@ -50,10 +56,23 @@ function postDisplay(object) {
 	recipe.innerHTML = object.content.rendered;
 	const mainImg = document.querySelector("#single-post");
 	const postImg = document.querySelectorAll("img");
-	console.log(mainImg);
-	console.log(postImg);
+
 	mainImg.addEventListener("click", function (e) {
-		imgModal(mainImg, object);
+		modalContainer.style.display = "flex";
+		modalImg.src = `${object.image_src}`;
+	});
+
+	postImg.forEach((image) => {
+		image.addEventListener("click", function (e) {
+			modalContainer.style.display = "flex";
+			modalImg.src = `${image.src}`;
+		});
+	});
+
+	modalContainer.addEventListener("click", function (e) {
+		if (!modalImg.contains(e.target)) {
+			modalContainer.style.display = "none";
+		}
 	});
 }
 
@@ -66,13 +85,8 @@ addMessage.addEventListener("submit", function (e) {
 	formValidation(userName, userNameError, 2);
 	formValidation(message, messageError, 2);
 	if (formValidation(userName, userNameError, 2) && formValidation(message, messageError, 2) === true) {
-		let commentUrl = `http://localhost:8888/gourmet/wp-json/wp/v2/comments?post=${postId}&content=${message.value}&author_name=${userName.value}&author_email=${userMail.value}`;
+		let commentUrl = `http://localhost:5555/gourmet/wp-json/wp/v2/comments?post=${postId}&content=${message.value}&author_name=${userName.value}&author_email=${userMail.value}`;
 		addComment(commentUrl);
 		window.location.reload();
 	}
 });
-
-function imgModal(mainImg, object) {
-	modalContainer.style.display = "block";
-	modalImg.src = `${object.image_src}`;
-}
