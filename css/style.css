@@ -5,13 +5,15 @@
 }
 
 :root {
-	--magenta: #96064f;
+	--magenta: #3c110c;
+	/* --magenta: #96064f; */
 	--stone: #4f6c82;
 	--pecan: #3c110c;
 	--alabaster: #fef9ef;
 	--fontLogoHeader: "Dancing Script", Helvetica, Arial, sans-serif;
 	--fontLogoSubheader: "Josefin Sans", Serif, Helvetica, sans-serif;
-	--fontHeader: "Playfair Display", Georgia, Garamond, "Times New Roman", serif;
+	--fontHeader: "Josefin Sans", Serif, Helvetica, sans-serif;
+	/* --fontHeader: "Playfair Display", Georgia, Garamond, "Times New Roman", serif; */
 	--fontParagraph: "Source Sans Pro", Verdana, Arial, Helvetica, sans-serif;
 }
 
